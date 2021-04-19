@@ -17,14 +17,8 @@
         <link rel="stylesheet" href="assets\master.css">
         <link rel="stylesheet" href="assets\media-query.css">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
-
         <!-- Fontawesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-
-        <!-- TODO:  -->
-        <!-- Animate js -->
-        <!-- <script  src ="anime.min.js"></script> -->
 
         <!-- Animate -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -33,46 +27,47 @@
     </head>
 
     <body>
-        <div id="root">
-            <div class="container-fluid">
-                <nav>
-                    <div class="input-group">
-                        <button @click="sortList" class="btn-grey ml-3 p-lr">
-                            Ordina per anno
-                            <i class="fas" :class= "(flag) ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
-                        </button>
+        <div id="root" @click="toggleEvent">
 
-                        <input type="text" v-model="searchValue">
-                    </div>
-                </nav>
-
-                <div class="row row-SearchRes">
-                    <ul id="cardList" class="scroll">
-                        <li v-for="item in tracksFiltered">
-                            <div class="card animate__animated animate__zoomIn animate__slow">
-                              <img :src="item.poster" class="card-img-top" alt="...">
-                              <!-- <button type="button">
-                                  <i class="fa fa-play-circle fa-3x"></i>
-                              </button> -->
-                              <div class="card-body">
-                                <h4 class="card-title"> {{}} </h4>
-                                <p class="card-text"><small> {{}} </small></p>
-                                <p class="card-text"><small> {{}} </small></p>
-                              </div>
-                            </div>
-                        </li>
-                    </ul>
+            <nav>
+                <div class="logoNav">
                 </div>
-            </div>
 
+                <form class="form-inline my-2 my-lg-0">
+                    <search-movie
+                        @submit-title="callMovies">
+                    </search-movie>
+
+                    <lang-selct
+                        :langs = "$store.state.arrLang">
+                    </lang-selct>
+                </form>
+            </nav>
+
+            <main class="rowMovie">
+                <!-- list movie -->
+                <movie-list
+                    :movies= "arrMovie">
+                </movie-list>
+
+                <div class="jumbo animate__animated animate__fadeIn animate__slower animate__delay-0.6s" v-show="!arrMovie.length">
+                    <img class="concord-img vlv-creative" srcset="https://assets.nflxext.com/ffe/siteui/vlv3/92bb3a0b-7e91-40a0-b27b-f2c3ac9ef6e4/427f698c-54be-4aba-bf62-d8d0d0a83510/IT-it-20210322-popsignuptwoweeks-perspective_alpha_website_small.jpg 1000w, https://assets.nflxext.com/ffe/siteui/vlv3/92bb3a0b-7e91-40a0-b27b-f2c3ac9ef6e4/427f698c-54be-4aba-bf62-d8d0d0a83510/IT-it-20210322-popsignuptwoweeks-perspective_alpha_website_medium.jpg 1500w, https://assets.nflxext.com/ffe/siteui/vlv3/92bb3a0b-7e91-40a0-b27b-f2c3ac9ef6e4/427f698c-54be-4aba-bf62-d8d0d0a83510/IT-it-20210322-popsignuptwoweeks-perspective_alpha_website_large.jpg 1800w" alt="">
+                </div>
+            </main>
         </div>
 
         <!-- Vue ajax/libs-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" charset="utf-8"></script>
-        <!-- VUE CDN 1 -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
-        <!-- VUE CDN 2 -->
+
+        <!-- VUE CDN -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+        <!-- Vuex -->
+        <script src="https://unpkg.com/vuex@2.0.0"></script>
+
+        <!-- Promise IE -->
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+
         <!-- Script js -->
         <script src="assets/main.js"></script>
     </body>

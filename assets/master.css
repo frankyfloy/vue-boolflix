@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     border: 0;
@@ -12,123 +12,262 @@ label{
     margin: 0;
 }
 
-
-body{
-    height: 100vh;
-    width: 100vw;
-    font-family: 'Ubuntu', sans-serif;
-    text-rendering: optimizeLegibility;
-    background-color: #dfdfdf;
-    overflow-y:  hidden;
-    display: flex;
+body,html{
+    background: #000000;
+    color: #ecf0f1;
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
 }
 
-/* Contenitore Root */
 #root{
-    margin-top: 80px;
+    background: #0E0F11;
     display: flex;
-    flex-direction: column;
+    margin-top: calc(8vh + 40px);
+    padding: 50px 0;
+    overflow-x: hidden;
 }
 
-#root > .container-fluid{
-    background-image: linear-gradient(100deg, #000000 33%, #414141 95%);
-    width: 100vw;
-    padding: 0 50px;
-}
-
+/* ------- NAV ---------*/
 nav{
-    height: 80px;
+    height: 8vh;
+    min-height: 60px;
+    width: 100vw;
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
-    width: 100%;
-    background-image: linear-gradient(184deg, #000000 17%, #414141 200%);
-    display: flex;
-}
-
-nav .input-group{
-    width: max-content;
-    margin: auto;
-}
-
-.row-SearchRes{
-
-}
-
-.card{
-    border: none;
-    background-image: linear-gradient(0deg, #000000 0%, #414141 150%);
-    /* padding: 20px; */
-    flex: 0 0 250px;
-    justify-content: center;
-    color: #e9ecef;
-    /* max-width: 330px; */
-    /* border-radius: 20px; */
-    /* margin: 10px 20px; */
-}
-
-
-#cardList{
-    /* margin: 20px 0; */
-    width: 100%;
-    height: 50%;
-    list-style: none;
-    height: 100%;
+    margin-top: 20px;
+    padding: 0 60px;
+    background-image: linear-gradient(184deg, #000000 17%, #343a40 200%);
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#cardList > li{
-    padding: 10px 0;
-    font-size: 25px;
-    /* text-shadow: 1px 1px 1px #000000;
-    box-shadow: 0px 1px 2px #000000; */
-    /* border: 1px solid black; */
+
+
+/* *******  Nav ********* */
+nav .logoNav{
+    width: 180px;
+    min-width: 180px;
+    height: 100%;
+    min-height: 60px;
+    background-image: url('img\\netflix-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: center;
+
 }
 
-#cardList > li img{
-    max-width: 100%;
-    min-height: 300px;
+nav form input{
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 20px;
+    background: rgb(202 200 200);
 }
 
-nav > button{
-    text-shadow: 1px 1px 1px #000000;
-    border-color: rgba(0,0,0,0.84);
-    box-shadow: 5px 5px 6px #888888;
-    color: #F3EEEA;
+
+/* PLACEHOLDER SEARCH */
+nav input:focus::placeholder{
+    font-size: 0;
+
+}
+nav input::placeholder:active{
+    color: black;
 }
 
-/* button:active{
-    outline: none;
+
+/* ----- Select Language ----- */
+#langSelct{
+    width: 30px;
+    height: 25px;
+    margin-left: 20px;
+    cursor: pointer;
 }
 
-button:focus{
-    outline: none;
-    transform: scale(1.02);
-    transition: 0.3s;
-} */
+#cont-OthLang{
+    position: absolute;
+    width: 30px;
+    top: 25px;
+    right: 0;
+    z-index: 10;
+    box-shadow: 0px 0px 2px 2px #151111;
+}
 
-.p-lr{
+#cont-OthLang > div{
+    cursor: pointer;
+    height: 25px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#cont-OthLang > div:hover{
+    transform: scale(1.2);
+    transform-style:preserve-3d;
+    transition: all 0.15s ease-In-Out;
+}
+
+
+/* ----------- MAIN ---------------*/
+.jumbo > img{
+    MIN-HEIGHT: -WEBKIT-FILL-AVAILABLE;
+    opacity: 0.8;
+}
+
+.rowMovie{
+    height: 70vh;
+    width: 100vw;
+
+    margin: 50px 0;
+    padding: 0 60px;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container-Movie {
+    display: flex;
+    align-items: center;
+    background: #000000;
+    height: 100%;
+    width: 100%;
+    border: 2px groove #ff0000fa;
+    box-shadow: 0px 0px 2px 3px #ff0000fa;
+}
+
+
+/* Style card and transition effect*/
+.myCard {
+    padding: 0 5px;
+    position: relative;
+    display: block;
+    /* flex: 1 1 0px; */
+    transition: transform 500ms;
+}
+
+/* Poster movie */
+.myCard > .card-poster {
+  display: block;
+  max-width: 100%;
+  min-width: 300px;
+  height: 300px;
+  object-position: top;
+}
+
+.container-Movie:focus-within .myCard,
+.container-Movie:hover .myCard {
+  transform: translateX(-25%);
+}
+
+.container-Movie:focus,
+.container-Movie:hover{
+  padding-left: 100px;
+  transition: padding-left 0.4s ease-in-out;
+}
+
+/* First and last element display space management */
+.myCard:first-child{
+    padding-left: 10px;
+}
+
+/* Offset last card */
+.offset-card{
+    display: table;
+    width: 160px;
+    height: 300px;
+}
+/* ------------------------------------------------- */
+
+.container-Movie:hover .myCard {
+  transform: translateX(-25%);
+  opacity: 0.6;
+  transition: all 0.36s linear;
+}
+
+.myCard:focus ~ .myCard,
+.myCard:hover ~ .myCard {
+  transform: translateX(25%);
+  opacity: 0.6;
+  transition: all 0.36s linear;
+}
+
+.container-Movie .myCard:focus,
+.container-Movie .myCard:hover {
+  transform: scale(1.5);
+  z-index: 1;
+  opacity: 1;
+}
+
+/* Card body */
+.myCard-body{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    top: 0;
+    left: 0;
     padding: 0 10px;
+    opacity: 0;
+    text-shadow: 2px 2px 4px #000000;
 }
 
-.btn-grey{
-    background-color: #e9ecef;
+.myCard-body > *{
+    margin: 10px 0;
 }
 
-/* ---------------Scroll Vertical (Classe Scroll)------------------------- */
+/* Lang flag */
+.myCard-body img{
+    width:20px;
+}
+
+/* Style e transition hover card body */
+.myCard:hover .card-poster{
+    transform: scale(1.05);
+    opacity: 0.18;
+    transition: all 0.6s ease-in-out;
+}
+
+.myCard:hover .myCard-body{
+    opacity: 1;
+    transition: all 0.7s ease-in-out;
+}
+
+.myCard-vote > i{
+    color: yellow;
+}
+
+
+
+/* ---------------Scroll Orizontal (Classe Scroll)------------------------- */
 .scroll{
-	overflow-y: auto;
-	overflow-x: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 .scroll::-webkit-scrollbar{
+    height: 8px;
 	-webkit-overflow-scrolling: auto;
-	width: 6px;
-}
-.scroll::-webkit-scrollbar-thumb{
-	border-radius: 6px;
-    background-color: #000000;
-    box-shadow: 0 0 1px rgba(255,255,255,.5);
+    -webkit-box-shadow: 0px 0px 2px 1px #151111;
 }
 
+/* Track */
+.scroll::-webkit-scrollbar-track {
+    margin: 0 40px;
+}
+
+/* Handle */
+.scroll::-webkit-scrollbar-thumb{
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 1px 0px #151111;
+    background: rgb(250 239 239 / 60%);
+}
+
+.scroll::-webkit-scrollbar-thumb:window-inactive {
+	background: rgb(14 15 17 / 80%);
+}
 /* ------------------------------------------------------------- */

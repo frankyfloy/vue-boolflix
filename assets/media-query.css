@@ -1,12 +1,84 @@
-@media (max-width: 1400px) {
+@media (max-width: 700px) {
     #root{
-        /* height: 100%;
-        width: 100%;
-        margin: 0; */
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    nav {
+        padding: 0 40px;
     }
 
-    #cardList{
-        
+    .rowMovie{
+        padding: 0 40px;
     }
 
+    nav form input {
+        width: 100px;
+        font-size: 80%;
+    }
+
+    .myCard > .card-poster {
+      min-width: 200px;
+      height: 200px;
+    }
+
+    .myCard-body *{
+        font-size: 90%;
+    }
+
+    .myCard-body > .myCard-original_title{
+        font-size: 80%;
+    }
+
+    .myCard-body > .myCard-vote{
+        font-size: 60%;
+    }
+
+    .container-Movie:focus,
+    .container-Movie:hover{
+      padding-left: 50px;
+      transition: padding-left 0.4s ease-in-out;
+    }
+
+    /* Offset last card */
+    .offset-card{
+        display: table;
+        width: 20px;
+        height: 200px;
+    }
+
+}
+
+@media (max-width: 500px) {
+    #root{
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    nav {
+        padding: 0 40px;
+    }
+
+    .rowMovie{
+        padding: 0 40px;
+    }
+
+    nav form input {
+        width: 100px;
+        font-size: 80%;
+    }
+    .myCard > .card-poster {
+      min-width: 150px;
+      height: 150px;
+    }
+
+    .myCard-body *{
+        font-size: 80%;
+    }
+
+    .myCard-body > .myCard-original_title{
+        font-size: 70%;
+    }
+
+    .myCard-body > .myCard-vote{
+        font-size: 50%;
+    }
 }
